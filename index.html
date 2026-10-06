@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="William Steinley, forester and GIS analyst in Gold Run, California: timber inventory, LiDAR terrain and canopy analysis, harvest-unit mapping and cruise compilation.">
-    <meta name="theme-color" content="#2f6b3a">
+    <meta name="theme-color" content="#2f6b3a" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121613" media="(prefers-color-scheme: dark)">
     <meta property="og:title" content="William Steinley - Forester / GIS Analyst">
-    <meta property="og:image" content="https://williamsteinley.github.io/projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg">
-    <meta property="og:image:width" content="1870">
-    <meta property="og:image:height" content="1210">
-    <meta property="og:image:alt" content="Unit sheet, cable unit 404, 11x17: LiDAR hillshade with yarding-class tint, unit outlines, hatched stream exclusion zones, skyline corridors from four selected landings, legend and unit attribute table">
+    <meta property="og:image" content="https://williamsteinley.github.io/og-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="William Steinley, Forester / GIS Analyst, M.S. Forestry, beside a LiDAR harvest-unit planning map">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:description" content="Timber inventory, LiDAR and terrain analysis, harvest-unit mapping and cruise compilation. Portfolio and resume.">
     <meta property="og:type" content="website">
@@ -20,6 +21,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <title>William Steinley - Forester / GIS Analyst</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,12 +51,23 @@
         <h1>William Steinley</h1>
         <p class="tagline">Forester / GIS Analyst &middot; M.S. Forestry</p>
         <p class="subtitle">Timber inventory, LiDAR and terrain analysis, ArcGIS and open-source mapping</p>
+        <ul class="glance" aria-label="At a glance">
+          <li>8+ years in forestry</li>
+          <li>M.S. Forestry</li>
+          <li>RPF exam-eligible</li>
+          <li>ArcGIS Pro, LiDAR, Python, R</li>
+        </ul>
         <div class="header-actions">
           <a href="projects/resume/William_Steinley_Resume.pdf" class="button-primary" target="_blank" rel="noopener">Download resume (PDF)<span class="visually-hidden"> (opens in new tab)</span></a>
           <a href="#gis-projects" class="button-secondary">See the projects</a>
           <a href="https://github.com/williamsteinley" class="button-secondary" target="_blank" rel="noopener">GitHub<span class="visually-hidden"> (opens in new tab)</span></a>
           <a href="mailto:wjsteinley@gmail.com" class="button-secondary">Email</a>
         </div>
+        <p class="email-line">
+          <a href="mailto:wjsteinley@gmail.com">wjsteinley@gmail.com</a>
+          <button type="button" class="copy-email" data-copy="wjsteinley@gmail.com" aria-label="Copy email address" hidden>Copy</button>
+          <span class="copy-status" role="status" aria-live="polite"></span>
+        </p>
       </div>
     </header>
 
@@ -78,28 +91,31 @@
             <div class="gis-project-card">
               <h3>Mohawk Valley West Slope: LiDAR-based harvest-unit planning</h3>
               <figure class="featured-hero">
-                <a href="projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg" width="1870" height="1210" alt="Unit sheet, cable unit 404, 11x17: LiDAR hillshade with yarding-class tint, unit outlines, hatched stream exclusion zones, skyline corridors from four selected landings, legend and unit attribute table" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                <a href="projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg" target="_blank" rel="noopener"><picture>
+                  <source type="image/webp" srcset="projects/plumas-lidar-harvest-planning/unit_404_sheet_700.webp 700w, projects/plumas-lidar-harvest-planning/unit_404_sheet_1100.webp 1100w, projects/plumas-lidar-harvest-planning/unit_404_sheet_1400.webp 1400w, projects/plumas-lidar-harvest-planning/unit_404_sheet_1870.webp 1870w" sizes="(max-width: 480px) 92vw, (max-width: 1000px) 80vw, 900px">
+                  <img src="projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg" width="1870" height="1210" alt="Unit 404 map sheet, 11x17: LiDAR hillshade, yarding-class tint, unit outlines, stream exclusion zones and skyline corridors" fetchpriority="high">
+                </picture><span class="visually-hidden"> (opens in new tab)</span></a>
                 <figcaption>Cable unit 404, sheet 23 of 25: 4 of 53 candidate landings selected, 205 of 2,022 corridors feasible with a 50 ft tower. 40 ft contours, 1:12,000, September 2026. Demonstration data. <a href="projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg" target="_blank" rel="noopener">Open full sheet<span class="visually-hidden"> (opens in new tab)</span></a></figcaption>
               </figure>
               <div class="featured-strip">
                 <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/overview_sheet.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/overview_sheet_thumb.jpg" width="370" height="239" alt="Overview sheet, 11x17: all 24 demonstration units filled by yarding system over the hillshade, each unit outlined in white and numbered in a circle, cable units hatched, with the unit table of gross and net acres, slope, canopy and skyline screen" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
-                  <figcaption>All 24 units by yarding system, numbered and outlined so neighbouring units read apart, with the gross and net acre table, 1:24,000.</figcaption>
+                  <a href="projects/plumas-lidar-harvest-planning/overview_sheet.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/overview_sheet_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/overview_sheet_thumb.jpg 370w, projects/plumas-lidar-harvest-planning/overview_sheet_800.webp 800w" sizes="(max-width: 480px) 92vw, 190px" width="370" height="239" alt="Overview sheet, 11x17: all 24 demonstration units by yarding system over the hillshade, numbered and outlined, with the unit acre table" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <figcaption>All 24 units by yarding system, numbered and outlined so neighboring units read apart, with the gross and net acre table, 1:24,000.</figcaption>
                 </figure>
                 <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/yarding_class.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/yarding_class_thumb.jpg" width="319" height="340" alt="Yarding class from planning slope over the LiDAR hillshade, with demonstration unit outlines numbered in circles" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <a href="projects/plumas-lidar-harvest-planning/yarding_class.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/yarding_class_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/yarding_class_thumb.jpg 319w, projects/plumas-lidar-harvest-planning/yarding_class_800.webp 800w" sizes="(max-width: 480px) 92vw, 190px" width="319" height="340" alt="Yarding class from planning slope over the LiDAR hillshade, with the demonstration units outlined and numbered" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
                   <figcaption>Planning slope classed at 35 and 50 percent over the LiDAR hillshade.</figcaption>
                 </figure>
                 <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/unit_404_profiles.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/unit_404_profiles_thumb.jpg" width="204" height="340" alt="Skyline profile sheet, unit 404: ground profile, chord, mid-span deflection and minimum clearance for six settings; best corridor from each of the four selected landings and two further landings" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <a href="projects/plumas-lidar-harvest-planning/unit_404_profiles.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/unit_404_profiles_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/unit_404_profiles_thumb.jpg 204w, projects/plumas-lidar-harvest-planning/unit_404_profiles_576.webp 576w" sizes="(max-width: 480px) 60vw, 190px" width="204" height="340" alt="Skyline profiles for unit 404: ground line, chord, mid-span deflection and minimum clearance for six settings" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
                   <figcaption>Unit 404 skyline profiles: chord, deflection, clearance and allowable payload. Demonstration data.</figcaption>
                 </figure>
                 <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/equipment_matrix.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/equipment_matrix_thumb.jpg" width="370" height="222" alt="Equipment selection matrix: feasible corridors by horizontal span and chord slope; cable units in blue, tractor units checked as if cable in orange" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <a href="projects/plumas-lidar-harvest-planning/equipment_matrix.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/equipment_matrix_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/equipment_matrix_thumb.jpg 370w, projects/plumas-lidar-harvest-planning/equipment_matrix_800.webp 800w" sizes="(max-width: 480px) 92vw, 190px" width="370" height="222" alt="Equipment selection matrix: feasible corridors by span and chord slope; cable units in blue, tractor units in orange" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
                   <figcaption>Feasible corridors by span and chord slope against equipment classes. Demonstration data.</figcaption>
                 </figure>
                 <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/unit_101_review.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/unit_101_review_thumb.jpg" width="263" height="340" alt="Field data review sheet, unit 101, page 1: stand summary with sampling error, cruise design check against the FSH 2409.12 stratum standard, stand table by DBH class, stock table by species" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <a href="projects/plumas-lidar-harvest-planning/unit_101_review.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/unit_101_review_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/unit_101_review_thumb.jpg 263w, projects/plumas-lidar-harvest-planning/unit_101_review_742.webp 742w" sizes="(max-width: 480px) 80vw, 190px" width="263" height="340" alt="Unit 101 field data review sheet: stand summary with sampling error, FSH 2409.12 check, stand and stock tables" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
                   <figcaption>Unit 101 review sheet: sampling error, stand and stock tables, FSH 2409.12 check. Simulated data.</figcaption>
                 </figure>
               </div>
@@ -111,37 +127,41 @@
                 <p><strong>Result.</strong> 1,621 gross and 1,408 net acres. 18 tractor units and 6 cable; 5 of the 6 cable units have feasible corridors and one is flagged for a spur road.</p>
                 <p><strong>Limits.</strong> No field verification. Wildlife, cultural and soils constraints are not modeled. Next is a field check of the CHM.</p>
               </div>
-              <h4>3D terrain and canopy models from the same LiDAR</h4>
-              <p>A 1.48 by 1.48 mile window of the block, rebuilt in Blender as real geometry from the same 2018 QL1 point cloud as the map series above: 2.25 million vertices on a 5.2 ft grid, resampled from the 3 ft rasters, at true scale with no vertical exaggeration, so the slopes shown are the slopes measured. The NAIP drape is 2022 imagery, four years newer than the 2018 canopy surface it sits on.</p>
-              <div class="featured-strip">
-                <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/terrain3d_bare_earth.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_bare_earth_thumb.jpg" width="370" height="208" alt="3D render of the bare-earth LiDAR terrain model under the forest canopy, shaded by elevation, with road benches and drainages visible as fine cuts across the slope" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
-                  <figcaption>Bare earth under the canopy: 1,266 ft of relief, with road benches and drainages cut into the slope.</figcaption>
+              <details class="deep-dive">
+                <summary><h4>3D terrain and canopy models from the same LiDAR</h4><span class="summary-note">4 renders</span></summary>
+                <p>A 1.48 by 1.48 mile window of the block, rebuilt in Blender as real geometry from the same 2018 QL1 point cloud as the map series above: 2.25 million vertices on a 5.2 ft grid, resampled from the 3 ft rasters, at true scale with no vertical exaggeration, so the slopes shown are the slopes measured. The NAIP drape is 2022 imagery, four years newer than the 2018 canopy surface it sits on.</p>
+                <div class="featured-strip">
+                  <figure>
+                    <a href="projects/plumas-lidar-harvest-planning/terrain3d_bare_earth.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_bare_earth_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/terrain3d_bare_earth_thumb.jpg 370w, projects/plumas-lidar-harvest-planning/terrain3d_bare_earth_800.webp 800w" sizes="(max-width: 480px) 92vw, 240px" width="370" height="208" alt="3D render of the bare-earth LiDAR terrain, shaded by elevation, with road benches and drainages cut across the slope" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                    <figcaption>Bare earth under the canopy: 1,266 ft of relief, with road benches and drainages cut into the slope.</figcaption>
+                  </figure>
+                  <figure>
+                    <a href="projects/plumas-lidar-harvest-planning/terrain3d_canopy_height.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_canopy_height_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/terrain3d_canopy_height_thumb.jpg 370w, projects/plumas-lidar-harvest-planning/terrain3d_canopy_height_800.webp 800w" sizes="(max-width: 480px) 92vw, 240px" width="370" height="208" alt="3D render of the canopy height model from above: individual conifer crowns, with roads and openings as pale gaps" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                    <figcaption>Canopy height model, height above ground only. Individual crowns resolve at 5.2 ft cells.</figcaption>
+                  </figure>
+                  <figure>
+                    <a href="projects/plumas-lidar-harvest-planning/terrain3d_canopy.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_canopy_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/terrain3d_canopy_thumb.jpg 370w, projects/plumas-lidar-harvest-planning/terrain3d_canopy_800.webp 800w" sizes="(max-width: 480px) 92vw, 240px" width="370" height="208" alt="3D render of the LiDAR canopy surface draped with NAIP imagery, with a road switchbacking across the slope" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                    <figcaption>Canopy surface draped with 2022 NAIP orthoimagery, which photographs the crowns it is draped on.</figcaption>
+                  </figure>
+                  <figure>
+                    <a href="projects/plumas-lidar-harvest-planning/terrain3d_slope.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_slope_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/terrain3d_slope_thumb.jpg 370w, projects/plumas-lidar-harvest-planning/terrain3d_slope_800.webp 800w" sizes="(max-width: 480px) 92vw, 240px" width="370" height="208" alt="3D render of the bare-earth terrain colored by planning slope: pale on gentle benches, red on steep drainage walls" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                    <figcaption>Planning slope on the same ground: gentle benches pale, cable-yarding drainage walls red.</figcaption>
+                  </figure>
+                </div>
+              </details>
+              <details class="deep-dive">
+                <summary><h4>Cartography: what the first version got wrong</h4><span class="summary-note">3 fixes</span></summary>
+                <p>The unit sheets went through a symbology review against a current Forest Service sale area map (Willamette National Forest, JC timber sale) and published cartographic guidance. Three defects and their fixes:</p>
+                <figure class="wide-figure">
+                  <a href="projects/plumas-lidar-harvest-planning/symbology_before_after.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/symbology_before_after_thumb.jpg" srcset="projects/plumas-lidar-harvest-planning/symbology_before_after_thumb.jpg 740w, projects/plumas-lidar-harvest-planning/symbology_before_after_1100.webp 1100w" sizes="(max-width: 800px) 92vw, 740px" width="740" height="293" alt="The same six units before and after: shared fills and dashed lines merge neighbors; after, cased outlines and numbered circles" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <figcaption>The same ground on the overview sheet, before and after the review.</figcaption>
                 </figure>
-                <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/terrain3d_canopy_height.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_canopy_height_thumb.jpg" width="370" height="208" alt="3D render of the canopy height model seen from above, individual conifer crowns resolved as separate green mounds, with roads and openings appearing as pale gaps" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
-                  <figcaption>Canopy height model, height above ground only. Individual crowns resolve at 5.2 ft cells.</figcaption>
-                </figure>
-                <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/terrain3d_canopy.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_canopy_thumb.jpg" width="370" height="208" alt="3D render of the LiDAR canopy surface draped with NAIP aerial imagery, forming a photorealistic forested mountain with a road switchbacking across the slope" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
-                  <figcaption>Canopy surface draped with 2022 NAIP orthoimagery, which photographs the crowns it is draped on.</figcaption>
-                </figure>
-                <figure>
-                  <a href="projects/plumas-lidar-harvest-planning/terrain3d_slope.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/terrain3d_slope_thumb.jpg" width="370" height="208" alt="3D render of the bare-earth terrain coloured by planning slope, pale green on gentle benches grading to red on the steep drainage walls that require cable yarding" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
-                  <figcaption>Planning slope on the same ground: gentle benches pale, cable-yarding drainage walls red.</figcaption>
-                </figure>
-              </div>
-              <h4>Cartography: what the first version got wrong</h4>
-              <p>The unit sheets went through a symbology review against a current Forest Service sale area map (Willamette National Forest, JC timber sale) and published cartographic guidance. Three defects and their fixes:</p>
-              <figure>
-                <a href="projects/plumas-lidar-harvest-planning/symbology_before_after.jpg" target="_blank" rel="noopener"><img src="projects/plumas-lidar-harvest-planning/symbology_before_after_thumb.jpg" width="740" height="293" alt="Side by side crops of the same six harvest units. On the left, adjacent tractor units share one fill and a dashed boundary of the same colour, so they read as a single block, and two-line labels sit outside the narrow units. On the right, each unit is outlined in white and a solid colour, numbered in a circle inside its own boundary, with the cable units hatched." loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
-                <figcaption>The same ground on the overview sheet, before and after the review.</figcaption>
-              </figure>
-              <ul>
-                <li><strong>Neighbouring units read as one block.</strong> Two units of the same yarding system shared a fill and a boundary of the same colour, so the line between them disappeared. Every unit boundary now carries a white casing under a solid line, which is how a sale area map keeps the cutting unit boundary the strongest line on the sheet.</li>
-                <li><strong>Labels left their units.</strong> A two-line <em>Unit 405 / Cable</em> block does not fit a narrow drainage unit, so it was placed over the neighbour. Units now carry the number alone in a circle, placed inside the unit, on a leader when it has to sit outside.</li>
-                <li><strong>Cable units read as water.</strong> They follow the drainages, and a flat blue fill next to a blue riparian wash is ambiguous. They are now hatched, so the yarding system survives a grey print and red-green colour blindness as well.</li>
-              </ul>
+                <ul>
+                  <li><strong>Neighboring units read as one block.</strong> Two units of the same yarding system shared a fill and a boundary of the same color, so the line between them disappeared. Every unit boundary now carries a white casing under a solid line, which is how a sale area map keeps the cutting unit boundary the strongest line on the sheet.</li>
+                  <li><strong>Labels left their units.</strong> A two-line <em>Unit 405 / Cable</em> block does not fit a narrow drainage unit, so it was placed over the neighbor. Units now carry the number alone in a circle, placed inside the unit, on a leader when it has to sit outside.</li>
+                  <li><strong>Cable units read as water.</strong> They follow the drainages, and a flat blue fill next to a blue riparian wash is ambiguous. They are now hatched, so the yarding system survives a gray print and red-green color blindness as well.</li>
+                </ul>
+              </details>
               <p><a href="projects/plumas-lidar-harvest-planning/map/" class="button-primary">Open the interactive map</a></p>
               <div class="project-tech">
                 <span class="tech-badge">Demonstration on public data</span>
@@ -170,11 +190,11 @@
               </div>
               <div class="featured-strip">
                 <figure>
-                  <a href="projects/forest-inventory-analyzer/analyzer_dashboard.jpg" target="_blank" rel="noopener"><img src="projects/forest-inventory-analyzer/analyzer_dashboard_thumb.jpg" width="740" height="423" alt="The analyzer's browser dashboard after a cruise file is loaded: five stand metric cards reading 28.0 trees per acre, 45.8 square feet of basal area, 2,069 cubic feet and 7,944 board feet per acre and a 17.3 inch quadratic mean diameter, above a species composition bar chart and a diameter distribution chart" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <a href="projects/forest-inventory-analyzer/analyzer_dashboard.jpg" target="_blank" rel="noopener"><img src="projects/forest-inventory-analyzer/analyzer_dashboard_thumb.jpg" srcset="projects/forest-inventory-analyzer/analyzer_dashboard_thumb.jpg 740w, projects/forest-inventory-analyzer/analyzer_dashboard_1100.webp 1100w" sizes="(max-width: 480px) 92vw, 480px" width="740" height="423" alt="Analyzer dashboard for the sample cruise: stand metric cards, a species composition chart and a diameter distribution chart" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
                   <figcaption>Stand metrics, species composition and the diameter distribution, compiled from the sample cruise that ships with the tool.</figcaption>
                 </figure>
                 <figure>
-                  <a href="projects/forest-inventory-analyzer/analyzer_statistics.jpg" target="_blank" rel="noopener"><img src="projects/forest-inventory-analyzer/analyzer_statistics_thumb.jpg" width="740" height="346" alt="Sampling statistics table showing mean, standard error, lower and upper confidence limits and sampling error for trees per acre, basal area and both volume measures, with the three errors above 20 percent marked in red, and the growth projection controls below it" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
+                  <a href="projects/forest-inventory-analyzer/analyzer_statistics.jpg" target="_blank" rel="noopener"><img src="projects/forest-inventory-analyzer/analyzer_statistics_thumb.jpg" srcset="projects/forest-inventory-analyzer/analyzer_statistics_thumb.jpg 740w, projects/forest-inventory-analyzer/analyzer_statistics_1100.webp 1100w" sizes="(max-width: 480px) 92vw, 480px" width="740" height="346" alt="Sampling statistics table with standard errors and confidence limits; the three sampling errors above 20 percent are in red" loading="lazy"><span class="visually-hidden"> (opens in new tab)</span></a>
                   <figcaption>Sampling error at 95 percent against Student's t. Five plots is a thin sample and the tool says so: the board-foot volume error of 33 percent fails the Region 5 stratum standard of 30 percent.</figcaption>
                 </figure>
               </div>
@@ -200,14 +220,14 @@
 
           <div class="resume-section">
             <div>
-              <h3 class="resume-heading">Experience</h3>
+              <h3 class="resume-heading">Work Experience</h3>
 
               <div class="experience-item">
                 <div class="position">Principal / Consulting Forester</div>
                 <div class="company">Athena Resource Group &middot; Gold Run, CA</div>
                 <ul class="resume-bullets">
                   <li>Write land management plans for private landowners. Each plan turns owner objectives into a written prescription and a treatment schedule. Part-time consulting practice with field projects in Texas.</li>
-                  <li>Perform the prescribed treatments personally: chainsaw and hand thinning, brush and invasive species control.</li>
+                  <li>Carry out the prescribed treatments: chainsaw and hand thinning, brush and invasive species control.</li>
                   <li>Run business operations for the two-person firm: client acquisition, project scoping, and invoicing.</li>
                 </ul>
                 <div class="date">Mar 2026 &ndash; Present</div>
@@ -218,12 +238,13 @@
                 <div class="company">Jefferson Resource Company (JRC) &middot; Placerville, CA</div>
                 <ul class="resume-bullets">
                   <li>Supervised field crews of up to four personnel across ~8,000 acres on the Plumas National Forest Community Protection Project. Reviewed 500+ plots and caught layout and survey errors before U.S. Forest Service (USFS) deliverables went out.</li>
-                  <li>Applied National Environmental Policy Act (NEPA) requirements and silvicultural prescriptions in the field, including layout of tractor, cable and helicopter yarding units.</li>
-                  <li>Led the move from Avenza Maps Pro to ArcGIS Online, ArcGIS Pro, Esri Field Maps, and Survey123. Wrote two technical guides and the training materials that brought the crews over. Ended manual re-keying of field data and gave crews real-time cloud access.</li>
+                  <li>Applied NEPA requirements and silvicultural prescriptions in the field, including layout of tractor, cable and helicopter yarding units.</li>
+                  <li>Led the move from Avenza Maps Pro to ArcGIS Online, ArcGIS Pro, Esri Field Maps, and Survey123, ending manual re-keying of field data and giving crews real-time cloud access.</li>
+                  <li>Wrote two technical guides and the training materials that brought the crews over.</li>
                   <li>Automated map production and spatial data processing in Python and ArcPy, replacing hand-assembled maps with one standard output across deliverables. Validated every output against manual quality-control checks.</li>
-                  <li>Built CHM and DTM products from LiDAR point clouds in R (lidR). Checked point density and compared resampling approaches before setting the grid resolution. Produced slope and terrain derivatives used to pick yarding systems and delineate harvest units.</li>
+                  <li>Built CHM and DTM products from LiDAR point clouds in R (lidR), checking point density and resampling before setting grid resolution. Derived slope and terrain layers used to pick yarding systems and delineate harvest units.</li>
                   <li>Wrote R and lidR routines for individual tree crown delineation and canopy cover estimation, an open-source alternative to licensed processing software.</li>
-                  <li>Published and maintained 40+ hosted feature layers and geodatabases and managed offline map areas across three project areas. Crews used them to collect stream, inventory plot, archaeological, and forest disease and dieback data for timber sale planning, layout, and resource surveys.</li>
+                  <li>Published and maintained 40+ hosted feature layers and geodatabases, with offline map areas, across three project areas. Crews used them for stream, inventory plot, archaeological, and forest disease and dieback data.</li>
                   <li>Field liaison between JRC, USFS timber staff, and National Forest Foundation partners. Supported contract administration and USFS best management practice compliance under a Registered Professional Forester.</li>
                 </ul>
                 <div class="date">Feb 2024 &ndash; Mar 2026</div>
@@ -234,7 +255,7 @@
                 <div class="company">Sunrise Pines Forestry &middot; Flagstaff, AZ (projects in seven states)</div>
                 <ul class="resume-bullets">
                   <li>Laid out timber sales in seven states, from Rocky Mountain mixed conifer to Gulf Coastal Plain pine. Ground-based systems throughout, cable systems on steep ground in California and Montana.</li>
-                  <li>Cruised timber by fixed-plot, variable-radius, strip, and 100% methods on varied forest types and ownerships, and ran 250+ plots myself in eastern Oklahoma. Compiled the cruise data into volume summaries for appraisals, management plans, and harvest scheduling.</li>
+                  <li>Cruised timber by fixed-plot, variable-radius, strip, and 100% methods across forest types and ownerships, including 250+ plots in eastern Oklahoma. Compiled volume summaries for appraisals, management plans, and harvest scheduling.</li>
                   <li>Marked timber to silvicultural prescriptions in stands from ponderosa pine and mixed conifer to bottomland hardwood and shortleaf pine. Worked out implementation with landowners, consulting foresters, and logging contractors.</li>
                 </ul>
                 <div class="date">Apr 2022 &ndash; Jul 2023</div>
@@ -244,7 +265,7 @@
                 <div class="position">Fuels Technician</div>
                 <div class="company">Fire Safe Council of Nevada County &middot; Grass Valley, CA</div>
                 <ul class="resume-bullets">
-                  <li>Carried out fuel reduction prescriptions under a Registered Professional Forester. Ran mechanical treatments with chainsaws, tow-chippers, tracked masticators, and hand tools for community wildfire protection. Three-month position, then moved up to the forester role at Sunrise Pines.</li>
+                  <li>Carried out fuel reduction prescriptions under a Registered Professional Forester with chainsaws, tow-chippers, tracked masticators, and hand tools for community wildfire protection. Moved up to the Sunrise Pines forester role after three months.</li>
                   <li>Constructed control lines to burn plan specifications and worked prescribed fire ignition, holding, and mop-up operations.</li>
                 </ul>
                 <div class="date">Jan 2022 &ndash; Apr 2022</div>
@@ -277,24 +298,26 @@
               <div class="education-item">
                 <div class="degree">Master of Science in Forestry</div>
                 <div class="institution">Stephen F. Austin State University</div>
-                <p class="resume-note">Thesis: <a href="https://scholarworks.sfasu.edu/etds/548/" target="_blank" rel="noopener"><em>Consequences of Altered Burn Regimes on Plant Community Diversity in the Pineywoods of East Texas</em><span class="visually-hidden"> (opens in new tab)</span></a> (SFA ScholarWorks, full text). Committee: Oswald, Kidd, Glasscock. Xi Sigma Pi Forestry Honor Society. Thesis research and writing: Jul 2023 &ndash; Feb 2024.</p>
+                <p class="resume-note">Thesis: <a href="https://scholarworks.sfasu.edu/etds/548/" target="_blank" rel="noopener"><em>Consequences of Altered Burn Regimes on Plant Community Diversity in the Pineywoods of East Texas</em><span class="visually-hidden"> (opens in new tab)</span></a> (SFA ScholarWorks, full text). Honors: Xi Sigma Pi Forestry Honor Society. Thesis research and writing: Jul 2023 &ndash; Feb 2024.</p>
                 <div class="date">2024</div>
               </div>
 
               <div class="education-item">
                 <div class="degree">Bachelor of Science in Forestry</div>
                 <div class="institution">Stephen F. Austin State University</div>
-                <p class="resume-note">Minor in Spatial Science, concentration in Fire Management. Coursework in forest biometrics, GIS and remote sensing, fire ecology, spatial science and silviculture.</p>
+                <p class="resume-note">Minor: Geospatial Science &middot; Concentration: Fire Management. Relevant Coursework: Forest Biometrics, GIS and Remote Sensing, Fire Ecology, Spatial Science, Silviculture.</p>
                 <div class="date">2019</div>
               </div>
 
-              <h3 class="resume-heading">Certifications &amp; Qualifications</h3>
+              <h3 class="resume-heading">Certifications</h3>
               <div class="education-item">
                 <ul class="resume-bullets">
-                  <li>ELIGIBLE - California Registered Professional Forester (RPF), approved by the California Board of Forestry and Fire Protection to sit for the exam</li>
-                  <li>Qualified Cruiser (FSH 2409.12 ch. 60), U.S. Forest Service, Region 3, certified 2022&ndash;2023 while cruising Region 3 sales for Sunrise Pines Forestry</li>
-                  <li>Tree Risk Assessment Qualification (TRAQ), International Society of Arboriculture</li>
-                  <li>CPR, current</li>
+                  <li><strong>ELIGIBLE:</strong> California Registered Professional Forester (RPF), approved by the Board of Forestry and Fire Protection to sit for the exam</li>
+                  <li><strong>ELIGIBLE:</strong> ISA Certified Arborist, approved by the International Society of Arboriculture to sit for the exam</li>
+                  <li>Qualified Cruiser (FSH 2409.12 ch. 60), U.S. Forest Service, Region 3, certified 2022&ndash;2023 while cruising for Sunrise Pines Forestry</li>
+                  <li>Tree Risk Assessment Qualification (TRAQ), International Society of Arboriculture, current</li>
+                  <li>CPR Training, current</li>
+                  <li>Valid California Driver&rsquo;s License, clean record; own 4WD vehicle</li>
                 </ul>
               </div>
 
@@ -355,8 +378,13 @@
 
         <!-- CONTACT SECTION -->
         <section id="contact">
-          <h2>Get In Touch</h2>
-          <p>Open to forester and GIS analyst roles across the western and southeastern United States, willing to relocate, and available for consulting on inventory, LiDAR and harvest-unit mapping. Based in Gold Run, California.</p>
+          <h2>Get in touch</h2>
+          <p>Open to forester and GIS analyst roles anywhere in the U.S., including remote; willing to relocate. Also available for consulting on inventory, LiDAR and harvest-unit mapping. Based in Gold Run, California.</p>
+          <p class="email-line">
+            <a href="mailto:wjsteinley@gmail.com">wjsteinley@gmail.com</a>
+            <button type="button" class="copy-email" data-copy="wjsteinley@gmail.com" aria-label="Copy email address" hidden>Copy</button>
+            <span class="copy-status" role="status" aria-live="polite"></span>
+          </p>
 
           <div class="contact-links">
             <a href="https://github.com/williamsteinley" class="contact-link" target="_blank" rel="noopener">GitHub<span class="visually-hidden"> (opens in new tab)</span></a>

@@ -6,7 +6,10 @@
   <meta name="description" content="Interactive map of the Mohawk Valley West Slope harvest-unit planning demonstration: units, skyline corridors, landings, stream buffers and yarding class.">
   <meta property="og:title" content="Mohawk Valley West Slope - interactive map">
   <meta property="og:description" content="Interactive map of the Mohawk Valley West Slope harvest-unit planning demonstration: units, skyline corridors, landings, stream buffers and yarding class.">
-  <meta property="og:image" content="https://williamsteinley.github.io/projects/plumas-lidar-harvest-planning/unit_404_sheet.jpg">
+  <meta property="og:image" content="https://williamsteinley.github.io/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="William Steinley, Forester / GIS Analyst, M.S. Forestry, beside a LiDAR harvest-unit planning map">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#2f6b3a">
   <meta name="twitter:card" content="summary_large_image">
@@ -29,9 +32,24 @@
     #bar .sub { color: var(--muted); font-size: 0.875rem; }
     #bar nav a { color: var(--accent); text-decoration: none; display: inline-block; padding: 0.55rem 0.6rem 0.55rem 0; margin-right: 0.5rem; font-size: 0.95rem; }
     #bar nav a:hover { text-decoration: underline; }
+    #about-toggle { display: none; }
     #map { position: relative; flex: 1 1 auto; min-height: 0; }
     .legend { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 0.55rem 0.7rem; font-size: 0.875rem; line-height: 1.5; max-width: 250px; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
-    .legend summary { cursor: pointer; font-weight: 600; font-size: 0.85rem; margin: 0 0 0.25rem; }
+    .legend summary { cursor: pointer; font-weight: 600; font-size: 0.85rem; margin: 0 0 0.25rem; padding: 0.3rem 0; }
+    /* layer list: 18 px boxes on 28 px rows, so each target clears WCAG 2.2's 24 px spacing */
+    .leaflet-control-layers label > span { display: flex; align-items: center; gap: 0.4rem; min-height: 28px; }
+    .leaflet-control-layers-selector { width: 18px; height: 18px; margin: 0; flex: none; }
+    /* phones: a compact bar (subtitle behind "About this map"), so the map keeps most of the screen */
+    @media (max-width: 699px) {
+      #bar { padding: 0.4rem 0.75rem 0.2rem; gap: 0 0.6rem; }
+      #bar h1 { font-size: 0.95rem; flex-basis: 100%; }
+      #bar .sub { display: none; order: 2; flex-basis: 100%; padding-bottom: 0.35rem; }
+      #bar.show-about .sub { display: block; }
+      #bar nav { order: 1; flex-basis: 100%; display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      #bar nav::-webkit-scrollbar { display: none; }
+      #bar nav a { flex: none; padding: 0.5rem 0.55rem 0.5rem 0; margin-right: 0.35rem; font-size: 0.875rem; }
+      #about-toggle { display: inline-flex; flex: none; align-items: center; margin: 0.2rem 0.6rem 0.2rem 0; padding: 0.25rem 0.65rem; border: 1px solid var(--border); border-radius: 999px; background: #f6f7f3; color: var(--ink); font: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+    }
     .legend .row { display: flex; align-items: center; gap: 0.45rem; }
     .legend .sw { width: 22px; height: 12px; flex: none; border-radius: 2px; box-sizing: border-box; }
     .legend .ln { width: 22px; height: 0; flex: none; }
@@ -49,17 +67,18 @@
   </style>
 </head>
 <body>
-  <div id="bar">
+  <header id="bar">
     <h1>Mohawk Valley West Slope: harvest-unit planning</h1>
-    <span class="sub">Demo block from public data: USGS 3DEP LiDAR 2018, USFS EDW, NHD, BLM, Census. Not a Forest Service proposal. Cruise plots are simulated.</span>
-    <nav>
+    <span class="sub" id="about-map">Demo block from public data: USGS 3DEP LiDAR 2018, USFS EDW, NHD, BLM, Census. Not a Forest Service proposal. Cruise plots are simulated.</span>
+    <nav aria-label="Project links">
+      <button type="button" id="about-toggle" aria-expanded="false" aria-controls="about-map">About this map</button>
       <a href="../../../#gis-projects">Portfolio</a>
       <a href="https://github.com/williamsteinley/plumas-lidar-harvest-planning" target="_blank" rel="noopener">Repository</a>
       <a href="https://github.com/williamsteinley/plumas-lidar-harvest-planning/releases/tag/v1.1" target="_blank" rel="noopener">Map sheets and GeoPDFs</a>
       <a href="https://github.com/williamsteinley/plumas-lidar-harvest-planning/blob/main/docs/methods.md" target="_blank" rel="noopener">Methods</a>
     </nav>
-  </div>
-  <div id="map" role="application" aria-label="Interactive harvest-unit planning map"></div>
+  </header>
+  <main id="map" aria-label="Interactive harvest-unit planning map"></main>
   <script>
     const map = L.map('map', { zoomControl: true });
     const usgsTopo = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: 'Basemap: USGS The National Map (public domain)' });
@@ -77,6 +96,13 @@
       return (r / s).toLocaleString('en-US', { maximumFractionDigits: d });
     };
     const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
+    // On a phone a popup has to fit between the zoom buttons (left) and the layer button (right), or its title and
+    // close button open underneath them; the auto-pan padding keeps it from being panned back under them.
+    const narrow = window.innerWidth < 700;
+    const P = narrow
+      ? { maxWidth: Math.max(170, window.innerWidth - 140), maxHeight: Math.round(document.getElementById('map').clientHeight * 0.68),
+          autoPanPaddingTopLeft: L.point(50, 12), autoPanPaddingBottomRight: L.point(62, 12) }
+      : { maxWidth: 340 };
     const methodColor = m => m === 'Cable' ? getComputedStyle(document.documentElement).getPropertyValue('--cable').trim() : getComputedStyle(document.documentElement).getPropertyValue('--tractor').trim();
 
     const layers = {};
@@ -101,18 +127,18 @@
 
     add('Treatment block (USFS EDW)', 'block.geojson', { style: { color: '#111', weight: 2.5, dashArray: '8 5', fill: false } }, true);
     add('Riparian conservation areas', 'rca.geojson', { style: { color: '#7fb3d5', weight: 0.6, fillColor: '#bcd7ea', fillOpacity: 0.35 },
-      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Riparian conservation area</div>${row('Stream class', f.properties.class)}${row('Width', fmt(f.properties.width_ft) + ' ft each side')}<p>SNFPA widths, shown for context. Not an exclusion zone.</p>`) }, false);
+      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Riparian conservation area</div><table>${row('Stream class', f.properties.class)}${row('Width', fmt(f.properties.width_ft) + ' ft each side')}</table><p>SNFPA widths, shown for context. Not an exclusion zone.</p>`, P) }, false);
     add('Stream equipment exclusion zones', 'eez.geojson', { style: { color: '#2e6da4', weight: 0.8, fillColor: '#5da2d8', fillOpacity: 0.45 },
-      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Equipment exclusion zone</div>${row('Stream class', f.properties.class)}${row('Width', fmt(f.properties.width_ft) + ' ft each side')}<p>Netted out of unit acres.</p>`) }, true);
+      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Equipment exclusion zone</div><table>${row('Stream class', f.properties.class)}${row('Width', fmt(f.properties.width_ft) + ' ft each side')}</table><p>Netted out of unit acres.</p>`, P) }, true);
     add('Streams (NHD)', 'streams.geojson', { style: f => ({ color: '#0070c0', weight: f.properties.class === 'perennial' ? 2.2 : 1.3, dashArray: f.properties.class === 'intermittent' ? '6 4' : (f.properties.class === 'ephemeral' ? '2 4' : null) }),
-      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">${f.properties.name || 'Unnamed stream'}</div>${row('Class', f.properties.class)}`) }, true);
+      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">${f.properties.name || 'Unnamed stream'}</div><table>${row('Class', f.properties.class)}</table>`, P) }, true);
     add('Contours, 200 ft', 'contours200.geojson', { style: { color: '#96502d', weight: 0.9, opacity: 0.8 }, onEachFeature: (f, l) => l.bindTooltip(fmt(f.properties.elev) + ' ft', { sticky: true }) }, false);
     add('Feasible skyline corridors', 'corridors_feasible.geojson', { style: { color: '#222', weight: 0.7, opacity: 0.55 },
-      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Skyline corridor, unit ${f.properties.unit_id}</div><table>${row('Landing', f.properties.landing_id)}${row('Span', fmt(f.properties.span_ft) + ' ft')}${row('Mid-span deflection', fmt(f.properties.deflection_pct, 1) + ' %')}${row('Minimum clearance', fmt(f.properties.min_clear_ft) + ' ft')}${row('Direction', f.properties.downhill ? 'downhill yarding' : 'uphill yarding')}${row('Span class', f.properties.span_class)}</table>`) }, false);
+      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Skyline corridor, unit ${f.properties.unit_id}</div><table>${row('Landing', f.properties.landing_id)}${row('Span', fmt(f.properties.span_ft) + ' ft')}${row('Mid-span deflection', fmt(f.properties.deflection_pct, 1) + ' %')}${row('Minimum clearance', fmt(f.properties.min_clear_ft) + ' ft')}${row('Direction', f.properties.downhill ? 'downhill yarding' : 'uphill yarding')}${row('Span class', f.properties.span_class)}</table>`, P) }, false);
     add('Candidate landings', 'landings.geojson', { pointToLayer: (f, ll) => L.circleMarker(ll, { radius: f.properties.corridors_ok > 0 ? 4.5 : 3, color: '#333', weight: 1, fillColor: f.properties.corridors_ok > 0 ? '#ffd400' : '#bbb', fillOpacity: 0.95 }),
-      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Landing ${f.properties.landing_id}, unit ${f.properties.unit_id}</div><table>${row('Elevation', fmt(f.properties.elev) + ' ft')}${row('Feasible corridors', fmt(f.properties.corridors_ok))}${row('Unit coverage', fmt(f.properties.coverage_pct) + ' %')}</table>`) }, false);
+      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Landing ${f.properties.landing_id}, unit ${f.properties.unit_id}</div><table>${row('Elevation', fmt(f.properties.elev) + ' ft')}${row('Feasible corridors', fmt(f.properties.corridors_ok))}${row('Unit coverage', fmt(f.properties.coverage_pct) + ' %')}</table>`, P) }, false);
     add('Cruise plots (simulated)', 'plots.geojson', { pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 3, color: '#444', weight: 0.8, fillColor: f.properties.flags ? '#e63946' : '#ffffff', fillOpacity: 0.95 }),
-      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Plot ${f.properties.plot}, unit ${f.properties.unit_id}</div><table>${row('Trees tallied', fmt(f.properties.n_trees))}${row('Slope', fmt(f.properties.slope) + ' %')}${row('QA flags', f.properties.flags || 'none')}</table><p>Simulated BAF 20 cruise. No crew measured these trees.</p>`) }, false);
+      onEachFeature: (f, l) => l.bindPopup(`<div class="pt">Plot ${f.properties.plot}, unit ${f.properties.unit_id}</div><table>${row('Trees tallied', fmt(f.properties.n_trees))}${row('Slope', fmt(f.properties.slope) + ' %')}${row('QA flags', f.properties.flags || 'none')}</table><p>Simulated BAF 20 cruise. No crew measured these trees.</p>`, P) }, false);
 
     let selected = null;
     const select = l => { if (selected) selected.setStyle(unitStyle(selected.feature)); l.setStyle({ weight: 4.5, color: '#000', fillOpacity: 0.02 }); selected = l; };
@@ -147,8 +173,8 @@
       return best ? L.latLng(best[1], best[0]) : fallback;
     }
     const unitStyle = f => ({ color: methodColor(f.properties.method), weight: 2.6, fillColor: methodColor(f.properties.method), fillOpacity: 0.06 });
-    // The units go on as a group: a white casing, the method-coloured boundary over it, and the unit number in a circle.
-    // Neighbouring units of the same method share an edge, and without the white seam that common boundary disappears
+    // The units go on as a group: a white casing, the method-colored boundary over it, and the unit number in a circle.
+    // Neighboring units of the same method share an edge, and without the white seam that common boundary disappears
     // into one shape; the printed sheets case the cutting-unit boundary for the same reason.
     const unitGroup = L.layerGroup(); overlays['Harvest units (demonstration)'] = unitGroup; layers['Harvest units (demonstration)'] = unitGroup;
     const unitsLoaded = fetch(D + 'units.geojson').then(r => r.json()).then(gj => {
@@ -171,7 +197,7 @@
             html += row('System', 'ground-based') + (p.corridors_feasible !== '' ? row('If cable', `${fmt(p.corridors_feasible)} feasible corridors, ${fmt(p.coverage_pct)} % coverage`) : '');
           }
           html += row('Printed sheet', `${sheetOf[+p.unit_id]} of 25`) + '</table>';
-          l.bindPopup(html, { maxWidth: 340 });
+          l.bindPopup(html, P);
           l.bindTooltip(`Unit ${p.unit_id}, ${p.method}`, { sticky: true });   // hover still names the unit when the numbers are hidden at low zoom
           l.on('click', () => { select(l); history.replaceState(null, '', '#unit=' + p.unit_id); });
         }
@@ -213,6 +239,29 @@
       L.control.layers({ 'USGS Topo': usgsTopo, 'USGS Imagery Topo': usgsImg }, ov, { collapsed: window.innerWidth < 700 }).addTo(map);
       // units last, and a layer group has no bringToFront of its own: raise its members in order, casing then faces
       order.forEach(k => { const l = overlays[k]; if (!l || !map.hasLayer(l)) return; if (l.bringToFront) l.bringToFront(); else if (l.eachLayer) l.eachLayer(x => x.bringToFront && x.bringToFront()); });
+      fitCorners();
+    });
+
+    // On a phone the credits wrap to two lines across the whole bottom edge and run under the scale bar and legend.
+    // Lift the bottom-left corner by the credits' height whenever the two would overlap.
+    function fitCorners() {
+      const credits = document.querySelector('.leaflet-control-attribution');
+      const corner = document.querySelector('.leaflet-bottom.leaflet-left');
+      if (!credits || !corner) return;
+      corner.style.bottom = '0px';
+      const a = credits.getBoundingClientRect(), c = corner.getBoundingClientRect();
+      if (a.width > 0 && a.left < c.right) corner.style.bottom = Math.ceil(a.height) + 'px';
+    }
+    map.on('baselayerchange', fitCorners);
+    window.addEventListener('resize', fitCorners);
+
+    // "About this map" shows the data note on phones, where the bar hides it to give the map the screen.
+    const bar = document.getElementById('bar'), aboutToggle = document.getElementById('about-toggle');
+    aboutToggle.addEventListener('click', () => {
+      const open = bar.classList.toggle('show-about');
+      aboutToggle.setAttribute('aria-expanded', String(open));
+      map.invalidateSize();
+      fitCorners();
     });
 
     const legend = L.control({ position: 'bottomleft' });
@@ -238,6 +287,7 @@
       L.DomEvent.disableClickPropagation(d); return d;
     };
     legend.addTo(map);
+    fitCorners();
   </script>
 </body>
 </html>
